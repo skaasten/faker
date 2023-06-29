@@ -9,12 +9,11 @@ jobs:
     steps:
       - checkout
       - ruby/install-deps
-      - run: mkdir test/reports
       - run:
           name: run tests
           command: circleci tests glob "test/**/test_*.rb"| circleci tests run --command "xargs bundle exec rake test"
       - store_test_results:
-          path: test/reports
+          path: results
       
   deploy:
     # This is an example deploy job, not actually used by the workflow

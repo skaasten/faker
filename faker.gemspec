@@ -39,5 +39,5 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency('test-unit', '3.5.9')
   spec.add_development_dependency('timecop', '0.9.6')
   spec.add_development_dependency('yard', '0.9.34')
-  spec.add_development_dependency('minitest-ci')
+  spec.add_development_dependency('minitest-reporters')
 end

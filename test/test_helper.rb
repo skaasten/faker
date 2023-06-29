@@ -16,6 +16,8 @@ require 'rubygems'
 require 'timecop'
 require 'yaml'
 
+require "minitest/reporters"
+
 YAML::ENGINE.yamler = 'psych' if defined? YAML::ENGINE
 require File.expand_path("#{File.dirname(__FILE__)}/../lib/faker")
 
@@ -41,3 +43,5 @@ def deterministically_verify(subject_proc, depth: 2, random: nil, &block)
   end.repeated_combination(2) { |(first, second)| assert_equal first, second }
   # rubocop:enable Style/MultilineBlockChain
 end
+
+Minitest::Reporters.use! [Minitest::Reporters::JUnitReporter.new()]
