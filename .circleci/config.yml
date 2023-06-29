@@ -10,8 +10,9 @@ jobs:
       - checkout
       - ruby/install-deps
       - run:
-          name: rake test
-          command: bundle exec rake test
+          name: run tests
+          command: circleci tests glob "test/**/test_*.rb"| circleci tests run --command "xargs bundle exec rake test"
+      
   deploy:
     # This is an example deploy job, not actually used by the workflow
     docker:
