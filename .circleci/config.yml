@@ -6,12 +6,16 @@ jobs:
     # Install gems, run rake tests
     docker:
       - image: cimg/ruby:3.2-node
+    environment:
+      TESTOPTS: "--ci-dir=$CIRCLE_TEST_REPORTS/reports"
     steps:
       - checkout
       - ruby/install-deps
       - run:
           name: run tests
           command: circleci tests glob "test/**/test_*.rb"| circleci tests run --command "xargs bundle exec rake test"
+      - store_test_results:
+          path: test/reports
       
   deploy:
     # This is an example deploy job, not actually used by the workflow
