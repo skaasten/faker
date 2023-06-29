@@ -18,4 +18,8 @@ class TestFakerHackers < Test::Unit::TestCase
   def test_quote
     assert_match(/\w+/, @tester.quote)
   end
+
+  def test_flakey
+    assert(false, "this is a flakey test")
+  end
 end
